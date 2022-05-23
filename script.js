@@ -6,24 +6,24 @@ function divide(x, y) {return x / y};
 function operate(operator, x, y) {
     switch(operator) {
         case "+":
-            array[0] = add(x, y);
-            array.splice(1, 2)
-            display.textContent = array.join(" ");
+            array[1] = add(x, y);
+            display.textContent = array[1];
+            console.log(array)
             break;
         case "-":
-            array[0] = subtract(x, y);
-            array.splice(1, 2)
-            display.textContent = array.join(" ");
+            array[1] = subtract(x, y);
+            display.textContent = array[1];
+            console.log(array)
             break;
         case "x":
-            array[0] = multiply(x, y);
-            array.splice(1, 2)
-            display.textContent = array.join(" ");
+            array[1] = multiply(x, y);
+            display.textContent = array[1];
+            console.log(array)
             break;
         case "/":
-            array[0] = divide(x, y);
-            array.splice(1, 2)
-            display.textContent = array.join(" ");
+            array[1] = divide(x, y);
+            display.textContent = array[1];
+            console.log(array)
             break;
         default:
             return "Error"
@@ -31,23 +31,36 @@ function operate(operator, x, y) {
 };
 let display = document.querySelector(".display");
 let buttons = Array.from(document.querySelectorAll('button'));
-let array;
+let array = [0];
 buttons.forEach(button => button.addEventListener("click", function(){
     if (button.textContent == "0" || button.textContent == "1" ||
         button.textContent == "2" || button.textContent == "3" ||
         button.textContent == "4" || button.textContent == "5" ||
         button.textContent == "6" || button.textContent == "7" ||
         button.textContent == "8" || button.textContent == "9") {
-            display.textContent += button.textContent;
+            if (!array[2]) {
+                display.textContent += button.textContent;
+            }
+            array[1] = display.textContent;
+            if (array[2]) {
+                display.textContent += button.textContent;
+                array[3] = display.textContent
+            }console.log(array)
     } else if (button.textContent == "x" || button.textContent == "-" ||
-               button.textContent == "+" || button.textContent == "/") {
-        display.textContent += " " + button.textContent + " ";
+    button.textContent == "+" || button.textContent == "/") {
+        if (!array[2]) {
+            array[2] = button.textContent;
+        }
+        if (array[3]){
+            operate(array[2], array[1], array[3])
+            array[2] = button.textContent;
+        }
     } else if (button.textContent == "=") {
-        array = display.textContent.split(" ");
         console.log(array)
-        operate(array[1], array[0], array[2]);
+        operate(array[2], array[1], array[3]);
     } else if (button.textContent == "c") {
         display.textContent = "";
+        array = [];
     }
 }))
 
