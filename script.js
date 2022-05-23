@@ -8,18 +8,22 @@ function operate(operator, x, y) {
         case "+":
             array[1] = add(x, y);
             display.textContent = array[1];
+            array[3] = undefined;
             break;
         case "-":
             array[1] = subtract(x, y);
             display.textContent = array[1];
+            array[3] = undefined;
             break;
         case "x":
             array[1] = multiply(x, y);
             display.textContent = array[1];
+            array[3] = undefined;
             break;
         case "/":
             array[1] = divide(x, y);
             display.textContent = array[1];
+            array[3] = undefined;
             break;
         default:
             return "Error"
@@ -35,24 +39,31 @@ buttons.forEach(button => button.addEventListener("click", function(){
         button.textContent == "6" || button.textContent == "7" ||
         button.textContent == "8" || button.textContent == "9") {
             if (!array[2]) {
+                /* if (array[1] == undefined) {
+                    array[1] = "";
+                } */
                 display.textContent += button.textContent;
+                array[1] += button.textContent;
             }
-            array[1] = display.textContent;
-            if (array[2]) 1
-                display.textContent = button.textContent;
-                array[3] = display.textContent;
-            }console.log(array)
-    } else if (button.textContent == "x" || button.textContent == "-" ||
-    button.textContent == "+" || button.textContent == "/") {
-        if (!array[2]) {
+            if (array[2]) {
+                if (array[3] == undefined) {
+                    display.textContent = ""
+                    array[3] = ""
+                }
+                display.textContent += button.textContent;
+                array[3] += button.textContent
+                console.log(array)
+            }
+        } else if (button.textContent == "x" || button.textContent == "-" ||
+        button.textContent == "+" || button.textContent == "/") {
+            if (!array[2]) {
+                array[2] = button.textContent;
+            }
+            if (array[3]){
             array[2] = button.textContent;
-        }
-        if (array[3]){
             operate(array[2], array[1], array[3])
-            array[2] = button.textContent;
         }
     } else if (button.textContent == "=") {
-        console.log(array)
         operate(array[2], array[1], array[3]);
     } else if (button.textContent == "c") {
         display.textContent = "";
