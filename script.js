@@ -8,22 +8,18 @@ function operate(operator, x, y) {
         case "+":
             array[1] = add(x, y);
             display.textContent = array[1];
-            console.log(array)
             break;
         case "-":
             array[1] = subtract(x, y);
             display.textContent = array[1];
-            console.log(array)
             break;
         case "x":
             array[1] = multiply(x, y);
             display.textContent = array[1];
-            console.log(array)
             break;
         case "/":
             array[1] = divide(x, y);
             display.textContent = array[1];
-            console.log(array)
             break;
         default:
             return "Error"
@@ -42,9 +38,9 @@ buttons.forEach(button => button.addEventListener("click", function(){
                 display.textContent += button.textContent;
             }
             array[1] = display.textContent;
-            if (array[2]) {
-                display.textContent += button.textContent;
-                array[3] = display.textContent
+            if (array[2]) 1
+                display.textContent = button.textContent;
+                array[3] = display.textContent;
             }console.log(array)
     } else if (button.textContent == "x" || button.textContent == "-" ||
     button.textContent == "+" || button.textContent == "/") {
