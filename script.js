@@ -39,11 +39,10 @@ buttons.forEach(button => button.addEventListener("click", function(){
         button.textContent == "6" || button.textContent == "7" ||
         button.textContent == "8" || button.textContent == "9") {
             if (!array[2]) {
-                /* if (array[1] == undefined) {
-                    array[1] = "";
-                } */
                 display.textContent += button.textContent;
-                array[1] += button.textContent;
+            }
+            if (!array[3]) {
+            array[1] = display.textContent;
             }
             if (array[2]) {
                 if (array[3] == undefined) {
@@ -51,18 +50,18 @@ buttons.forEach(button => button.addEventListener("click", function(){
                     array[3] = ""
                 }
                 display.textContent += button.textContent;
-                array[3] += button.textContent
-                console.log(array)
-            }
+                array[3] = display.textContent
+                
+            }console.log(array)
         } else if (button.textContent == "x" || button.textContent == "-" ||
         button.textContent == "+" || button.textContent == "/") {
+            if (array[3]){
+            operate(array[2], array[1], array[3])
+        }console.log(array)
+            array[2] = button.textContent
             if (!array[2]) {
                 array[2] = button.textContent;
             }
-            if (array[3]){
-            array[2] = button.textContent;
-            operate(array[2], array[1], array[3])
-        }
     } else if (button.textContent == "=") {
         operate(array[2], array[1], array[3]);
     } else if (button.textContent == "c") {
@@ -70,5 +69,6 @@ buttons.forEach(button => button.addEventListener("click", function(){
         array = [];
     }
 }))
+
 
 
