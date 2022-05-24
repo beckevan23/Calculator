@@ -7,22 +7,22 @@ function operate(operator, x, y) {
     switch(operator) {
         case "+":
             array[1] = add(x, y);
-            display.textContent = array[1];
+            display.textContent = array[1].toFixed(2);
             array[3] = undefined;
             break;
         case "-":
             array[1] = subtract(x, y);
-            display.textContent = array[1];
+            display.textContent = array[1].toFixed(2);
             array[3] = undefined;
             break;
         case "x":
             array[1] = multiply(x, y);
-            display.textContent = array[1];
+            display.textContent = array[1].toFixed(2);
             array[3] = undefined;
             break;
         case "/":
             array[1] = divide(x, y);
-            display.textContent = array[1];
+            display.textContent = array[1].toFixed(2);
             array[3] = undefined;
             break;
         default:
