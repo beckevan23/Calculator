@@ -52,12 +52,12 @@ buttons.forEach(button => button.addEventListener("click", function(){
                 display.textContent += button.textContent;
                 array[3] = display.textContent
                 
-            }console.log(array)
+            }
         } else if (button.textContent == "x" || button.textContent == "-" ||
         button.textContent == "+" || button.textContent == "/") {
             if (array[3]){
             operate(array[2], array[1], array[3])
-        }console.log(array)
+        }
             array[2] = button.textContent
             if (!array[2]) {
                 array[2] = button.textContent;
