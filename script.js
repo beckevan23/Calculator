@@ -7,22 +7,38 @@ function operate(operator, x, y) {
     switch(operator) {
         case "+":
             array[1] = add(x, y);
-            display.textContent = array[1].toFixed(2);
+            if (array[1] % 1 === 0) {
+                display.textContent = array[1];
+            } else {
+                display.textContent = array[1].toFixed(2);
+            }
             array[3] = undefined;
             break;
         case "-":
             array[1] = subtract(x, y);
-            display.textContent = array[1].toFixed(2);
+            if (array[1] % 1 === 0) {
+                display.textContent = array[1];
+            } else {
+                display.textContent = array[1].toFixed(2);
+            }
             array[3] = undefined;
             break;
         case "x":
             array[1] = multiply(x, y);
-            display.textContent = array[1].toFixed(2);
+            if (array[1] % 1 === 0) {
+                display.textContent = array[1];
+            } else {
+                display.textContent = array[1].toFixed(2);
+            }
             array[3] = undefined;
             break;
         case "/":
             array[1] = divide(x, y);
-            display.textContent = array[1].toFixed(2);
+            if (array[1] % 1 === 0) {
+                display.textContent = array[1];
+            } else {
+                display.textContent = array[1].toFixed(2);
+            }
             array[3] = undefined;
             break;
         default:
@@ -63,7 +79,11 @@ buttons.forEach(button => button.addEventListener("click", function(){
                 array[2] = button.textContent;
             }
     } else if (button.textContent == "=") {
-        operate(array[2], array[1], array[3]);
+        if (array[2] == "/" && array[3] == 0) {
+            display.textContent = "That's dumb (press clear button)"
+        } else {
+            operate(array[2], array[1], array[3]);
+        }
     } else if (button.textContent == "c") {
         display.textContent = "";
         array = [];
